@@ -1,0 +1,20 @@
+﻿@inject trivia.git.Data.TriviaContext _triviaContext
+@model trivia.git.Models.Question
+@{
+    ViewData["Title"] = $"Question: \"{Model.Text}\"";
+}
+<h1>Question: @Model.Text</h1>
+@if (Model.IsAnswerVisible)
+{
+    <h2>Answer: @Model.Answer</h2>
+}
+else
+{
+    <form method="post" asp-action="Answer">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button type="submit">Show Answer</button>
+    </form>
+}
+<p>Points: @Model.Points</p>
+
+<a asp-action="Index">Go Back to Game</a>

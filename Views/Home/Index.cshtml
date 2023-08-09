@@ -1,0 +1,15 @@
+﻿@inject trivia.git.Data.TriviaContext _triviaContext
+@{
+    ViewData["Title"] = "Home Page";
+    //  This view will be the landing page of the application. It will display a welcome message and a button to start the game.
+    var isNewGame = _triviaContext.Players.Count() == 0;
+}
+
+<div>
+    <a class="btn" asp-action="StartNew" asp-controller="Game">Start New Game</a>
+    @if (!isNewGame)
+    {
+        <div><b>or</b></div>
+        <a class="btn" asp-action="Index" asp-controller="Game">Continue Game</a>
+    }
+</div>

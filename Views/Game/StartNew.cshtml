@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Start New Game";
+}
+<h1>@ViewData["Title"]</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="playerNames">Player Names, separated by a comma</label>
+        <input type="text" class="form-control" id="playerNames" name="playerNames" placeholder="Jane Doe, Viveret Steele, ...">
+    </div>
+    <div class="form-group">
+        <label for="teamNames">Team Names, separated by a comma</label>
+        <input type="text" class="form-control" id="teamNames" name="teamNames" placeholder="Planet Express, Alphabet Mafia, ...">
+    </div>
+    <button type="submit" class="btn btn-primary">Next - Assign Teams</button>
+</form>

@@ -1,0 +1,26 @@
+﻿@inject trivia.git.Data.TriviaContext _triviaContext
+@model trivia.git.Models.Question
+@{
+    ViewData["Title"] = $"Answer to \"{Model.Text}\"";
+}
+<h1>Question: @Model.Text</h1>
+<h2>Answer: @Model.Answer</h2>
+<p>Points: @Model.Points</p>
+
+<h2>Award Points to:</h2>
+<ul>
+    @foreach (var player in _triviaContext.Players)
+    {
+        <li>
+            <form method="post" asp-action="AwardPoints">
+                <div class="input-group">
+                    <input type="hidden" name="playerId" value="@player.Key" />
+                    <input type="hidden" name="points" value="@Model.Points" />
+
+                    <button type="submit">@player.Value.Name</button>
+                </div>
+            </form>
+        </li>
+    }
+</ul>
+<a asp-action="Index">Go Back to Game</a>

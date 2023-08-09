@@ -1,0 +1,21 @@
+﻿@inject trivia.git.Data.TriviaContext _triviaContext
+@{
+    ViewData["Title"] = "Assign Teams";
+}
+<h1>@ViewData["Title"]</h1>
+<form method="post">
+    @foreach (var player in _triviaContext.Players)
+    {
+        <div class="input-group">
+            <label for="@player.Key">@player.Value.Name</label>
+            <select class="form-control" id="@player.Key" name="@player.Key">
+                <option value="">Select Team</option>
+                @foreach (var team in _triviaContext.Teams)
+                {
+                    <option value="@team.Key">@team.Value.Name</option>
+                }
+            </select>
+        </div>
+    }
+    <button type="submit" class="btn btn-primary">Next - Start Game</button>
+</form>

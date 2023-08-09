@@ -1,0 +1,90 @@
+@inject trivia.git.Data.TriviaContext _triviaContext
+@{
+    ViewData["Title"] = "Trivia";
+    // This view will display the game board. It will show the categories and the questions. The questions will be hidden until they are clicked.
+    // it will also show the teams with each player and their score. the score will be updated as the game progresses.
+    var categories = _triviaContext.GetCategories();
+    var teams = _triviaContext.Teams;
+    var teamColors = new string[] { "bg-primary", "bg-success", "bg-info", "bg-warning", "bg-danger" };
+}
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    @foreach (var category in categories)
+                    {
+                        <th>@category.Name</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (var level = 0; level < _triviaContext.GameDepth; level++)
+                {
+                    <tr>
+                        @for (var c = 0; c < categories.Count; c++)
+                        {
+                            var question = categories[c].Questions[level];
+                            var questionText = question.IsQuestionVisible ? $": {question.Text}" : "";
+                            var answerText = question.IsAnswerVisible ? $"Answer: {question.Answer}" : "";
+                            <td>
+                                <a class="btn btn-primary" asp-action="Question" asp-controller="Game" asp-route-id="@question.Id"><b>@(question.Points)</b>@questionText<div>@answerText</div></a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Teams</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    @for (var i = 0; i < teams.Count; i++)
+                    {
+                        var team = teams.ElementAt(i);
+                        var color = teamColors[i];
+                        var score = team.Value.Players.Sum(p => p.Score);
+                        <th colspan="2" class="@color text-light">@team.Value.Name (@score points)</th>
+                    }
+                </tr>
+                <tr>
+                    @for (var i = 0; i < teams.Count; i++)
+                    {
+                        var color = teamColors[i];
+                        <th class="@color text-light">Player Name</th>
+                        <th class="@color text-light">Score</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (var row = 0; row < teams.Max(t => t.Value.Players.Count); row++)
+                {
+                    <tr>
+                        @for (var col = 0; col < teams.Count; col++)
+                        {
+                            var color = teamColors[col];
+                            var team = teams.ElementAt(col);
+                            var player = team.Value.Players.ElementAtOrDefault(row);
+                            if (player != null)
+                            {
+                                <td class="@color text-light">@player.Name</td>
+                                <td class="@color text-light">@player.Score</td>
+                            }
+                            else
+                            {
+                                <td class="@color"></td>
+                                <td class="@color"></td>
+                            }
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
