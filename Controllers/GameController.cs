@@ -107,6 +107,12 @@ public class GameController : Controller
         }
     }
 
+    public IActionResult ShowAll()
+    {
+        _triviaContext.ShowAll();
+        return RedirectToAction(nameof(Index));
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

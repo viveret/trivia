@@ -151,4 +151,14 @@ public class TriviaContext
         Players[playerId].Score += points;
         SaveData();
     }
+
+    public void ShowAll()
+    {
+        foreach (var question in Questions)
+        {
+            question.Value.IsQuestionVisible = true;
+            question.Value.IsAnswerVisible = true;
+        }
+        SaveData();
+    }
 }
