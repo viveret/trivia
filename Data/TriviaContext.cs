@@ -8,7 +8,7 @@ namespace trivia.git.Data;
 
 public class TriviaContext
 {
-    private TriviaData Data { get; set; }
+    private TriviaData Data { get; set; } = new TriviaData();
     public ConcurrentDictionary<string, Question> Questions { get; } = new ConcurrentDictionary<string, Question>();
     public ConcurrentDictionary<string, Player> Players { get; } = new ConcurrentDictionary<string, Player>();
     public ConcurrentDictionary<string, Team> Teams { get; } = new ConcurrentDictionary<string, Team>();
@@ -29,7 +29,18 @@ public class TriviaContext
         if (File.Exists("TriviaData.json"))
         {
             var json = File.ReadAllText("TriviaData.json");
-            Data = JsonSerializer.Deserialize<TriviaData>(json);
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                return;
+            }
+
+            var data = JsonSerializer.Deserialize<TriviaData>(json);
+            if (data == null)
+            {
+                return;
+            }
+
+            Data = data;
 
             if (Data?.Categories != null)
             {
@@ -82,7 +93,7 @@ public class TriviaContext
 
     public void SaveData()
     {
-        File.WriteAllText("TriviaData.json", JsonSerializer.Serialize(Data));
+        File.WriteAllText("TriviaData.json", JsonSerializer.Serialize(Data, new JsonSerializerOptions { WriteIndented = true }));
     }
 
     public void Reset()
@@ -135,8 +146,15 @@ public class TriviaContext
     {
         foreach (var player in Players)
         {
-            player.Value.Team = Teams[player.Value.TeamId];
-            Teams[player.Value.TeamId].Players.Add(player.Value);
+            if (!string.IsNullOrEmpty(player.Value.TeamId))
+            {
+                player.Value.Team = Teams.TryGetValue(player.Value.TeamId ?? string.Empty, out var team) ? team : null;
+                Teams[player.Value.TeamId ?? string.Empty].Players.Add(player.Value);
+            }
+            else
+            {
+                player.Value.Team = null;
+            }
         }
         SaveData();
     }

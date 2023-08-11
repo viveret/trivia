@@ -1,1 +1,212 @@
-{"Categories":[{"Id":"status","Name":"Status of Women","Questions":[{"Id":"rwanda","Text":"What country has the highest percentage of women in government?","Answer":"Rwanda","Points":10,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"world_population","Text":"Women make up what percentage of the world\u0027s population?","Answer":"49.5%","Points":20,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"world_wealth","Text":"Women control what percentage of the world\u0027s wealth?","Answer":"30%","Points":30,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"name_of_index_of_gender_inequality","Text":"What is the name of the index that measures gender inequality in countries around the world?","Answer":"Gender Inequality Index (GII)","Points":40,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"un_treaty","Text":"What is the name of the United Nations treaty, adopted in 1979, aimed at eliminating discrimination against women globally?","Answer":"The Convention on the Elimination of All Forms of Discrimination against Women (CEDAW)","Points":50,"IsQuestionVisible":true,"IsAnswerVisible":true}]},{"Id":"challenges","Name":"Challenges","Questions":[{"Id":"first_woman_to_fly_solo_across_atlantic","Text":"Who was the first woman to fly solo across the Atlantic Ocean, symbolizing a breakthrough in a male-dominated field?","Answer":"Amelia Earhart","Points":10,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"women_in_leadership_roles_fortune_500","Text":"What is the percentage of women in leadership roles in Fortune 500 companies?","Answer":"10.4%","Points":20,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"libel_case","Text":"This woman successfully sued the New York Times for libel in 1971.","Answer":"Shirley Chisholm","Points":30,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"first_woman_us_supreme_court_justice","Text":"Who was the first woman to be appointed as a justice of the U.S. Supreme Court?","Answer":"Sandra Day O\u0027Connor","Points":40,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"first_woman_director_general_of_who","Text":"Who was the first woman to serve as the Director-General of the World Health Organization?","Answer":"Gro Harlem Brundtland","Points":50,"IsQuestionVisible":true,"IsAnswerVisible":true}]},{"Id":"media","Name":"Media / Pop Culture","Questions":[{"Id":"bechdel","Text":"What percentage of movies pass the Bechdel test?","Answer":"55%","Points":10,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"first_bechdel","Text":"Which movie was the first to pass the Bechdel test?","Answer":"Alien","Points":20,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"first_protagonist","Text":"Which movie was the first to have a woman protagonist?","Answer":"The Wizard of Oz","Points":30,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"malala_yousafzai","Text":"Who is the Pakistani activist who, as a teenager, was shot by the Taliban for advocating for girls\u0027 education?","Answer":"Joan Rivers","Points":40,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"speaking_roles","Text":"What percentage of speaking roles in top-grossing films are played by women?","Answer":"37%","Points":50,"IsQuestionVisible":true,"IsAnswerVisible":true}]},{"Id":"history","Name":"History and Achievements","Questions":[{"Id":"ada_lovelace","Text":"Who primarily was responsible for the creation of the first computer?","Answer":"Ada Lovelace","Points":10,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"nobel_prize","Text":"This woman was the first to win a Nobel Prize in 1903.","Answer":"Marie Curie","Points":20,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"first_woman_pritzker_architecture_prize_winner","Text":"Who was the first woman to win the Pritzker Architecture Prize, breaking barriers in a heavily male-dominated industry?","Answer":"Zaha Hadid","Points":30,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"space_travel","Text":"This woman was the first to travel to space in 1963.","Answer":"Valentina Tereshkova","Points":40,"IsQuestionVisible":true,"IsAnswerVisible":true},{"Id":"first_woman_ruler","Text":"Who is the first known woman ruler in the history of the world?","Answer":"Kubaba of Sumer (circa 2400 BCE)","Points":50,"IsQuestionVisible":true,"IsAnswerVisible":true}]}],"Players":[{"Id":"jane_doe","Name":"Jane Doe","Score":0,"TeamId":"alpha"},{"Id":"viveret_steele","Name":"Viveret Steele","Score":0,"TeamId":"planet_express"}],"Teams":[{"Id":"planet_express","Name":"Planet Express"},{"Id":"alpha","Name":"Alpha"}]}
+{
+  "Categories": [
+    {
+      "Id": "status",
+      "Name": "Status of Women",
+      "Questions": [
+        {
+          "Id": "rwanda",
+          "Text": "What country has the highest percentage of women in government?",
+          "Answer": "Rwanda",
+          "Points": 10,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "world_population",
+          "Text": "Women make up what percentage of the world\u0027s population?",
+          "Answer": "49.5%",
+          "Points": 20,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "world_wealth",
+          "Text": "Women control what percentage of the world\u0027s wealth?",
+          "Answer": "30%",
+          "Points": 30,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "name_of_index_of_gender_inequality",
+          "Text": "What is the name of the index that measures gender inequality in countries around the world?",
+          "Answer": "Gender Inequality Index (GII)",
+          "Points": 40,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "un_treaty",
+          "Text": "What is the name of the United Nations treaty, adopted in 1979, aimed at eliminating discrimination against women globally?",
+          "Answer": "The Convention on the Elimination of All Forms of Discrimination against Women (CEDAW)",
+          "Points": 50,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        }
+      ]
+    },
+    {
+      "Id": "challenges",
+      "Name": "Challenges",
+      "Questions": [
+        {
+          "Id": "first_woman_to_fly_solo_across_atlantic",
+          "Text": "Who was the first woman to fly solo across the Atlantic Ocean, symbolizing a breakthrough in a male-dominated field?",
+          "Answer": "Amelia Earhart",
+          "Points": 10,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "women_in_leadership_roles_fortune_500",
+          "Text": "What is the percentage of women in leadership roles in Fortune 500 companies?",
+          "Answer": "10.4%",
+          "Points": 20,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "libel_case",
+          "Text": "This woman successfully sued the New York Times for libel in 1971.",
+          "Answer": "Shirley Chisholm",
+          "Points": 30,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "first_woman_us_supreme_court_justice",
+          "Text": "Who was the first woman to be appointed as a justice of the U.S. Supreme Court?",
+          "Answer": "Sandra Day O\u0027Connor",
+          "Points": 40,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "first_woman_director_general_of_who",
+          "Text": "Who was the first woman to serve as the Director-General of the World Health Organization?",
+          "Answer": "Gro Harlem Brundtland",
+          "Points": 50,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        }
+      ]
+    },
+    {
+      "Id": "media",
+      "Name": "Media / Pop Culture",
+      "Questions": [
+        {
+          "Id": "bechdel",
+          "Text": "What percentage of movies pass the Bechdel test?",
+          "Answer": "55%",
+          "Points": 10,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "first_bechdel",
+          "Text": "Which movie was the first to pass the Bechdel test?",
+          "Answer": "Alien",
+          "Points": 20,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "first_protagonist",
+          "Text": "Which movie was the first to have a woman protagonist?",
+          "Answer": "The Wizard of Oz",
+          "Points": 30,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "malala_yousafzai",
+          "Text": "Who is the Pakistani activist who, as a teenager, was shot by the Taliban for advocating for girls\u0027 education?",
+          "Answer": "Joan Rivers",
+          "Points": 40,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "speaking_roles",
+          "Text": "What percentage of speaking roles in top-grossing films are played by women?",
+          "Answer": "37%",
+          "Points": 50,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        }
+      ]
+    },
+    {
+      "Id": "history",
+      "Name": "History and Achievements",
+      "Questions": [
+        {
+          "Id": "ada_lovelace",
+          "Text": "Who primarily was responsible for the creation of the first computer?",
+          "Answer": "Ada Lovelace",
+          "Points": 10,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "nobel_prize",
+          "Text": "This woman was the first to win a Nobel Prize in 1903.",
+          "Answer": "Marie Curie",
+          "Points": 20,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "first_woman_pritzker_architecture_prize_winner",
+          "Text": "Who was the first woman to win the Pritzker Architecture Prize, breaking barriers in a heavily male-dominated industry?",
+          "Answer": "Zaha Hadid",
+          "Points": 30,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "space_travel",
+          "Text": "This woman was the first to travel to space in 1963.",
+          "Answer": "Valentina Tereshkova",
+          "Points": 40,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "first_woman_ruler",
+          "Text": "Who is the first known woman ruler in the history of the world?",
+          "Answer": "Kubaba of Sumer (circa 2400 BCE)",
+          "Points": 50,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        }
+      ]
+    }
+  ],
+  "Players": [
+    {
+      "Id": "jane_doe",
+      "Name": "Jane Doe",
+      "Score": 0,
+      "TeamId": null
+    },
+    {
+      "Id": "viveret_steele",
+      "Name": "Viveret Steele",
+      "Score": 0,
+      "TeamId": null
+    }
+  ],
+  "Teams": [
+    {
+      "Id": "planet_express",
+      "Name": "Planet Express"
+    },
+    {
+      "Id": "alpha",
+      "Name": "Alpha"
+    }
+  ]
+}

@@ -6,13 +6,13 @@ namespace trivia.git.Models;
 
 public class Question
 {
-    public string Id { get; set; }
-    public string Text { get; set; }
-    public string Answer { get; set; }
+    public string Id { get; set; } = string.Empty;
+    public string Text { get; set; } = string.Empty;
+    public string Answer { get; set; } = string.Empty;
     public int Points { get; set; }
     public bool IsQuestionVisible { get; set; }
     public bool IsAnswerVisible { get; set; }
 
     [JsonIgnore]
-    public Category Category { get; set; }
+    public Category? Category { get; set; }
 }

@@ -23,7 +23,6 @@ public class GameController : Controller
     {
         // if post, then begin team assignment with players
         // if get, then show form to create new game
-
         if (Request.Method == "POST")
         {
             // save data
@@ -40,13 +39,12 @@ public class GameController : Controller
     {
         // if post, then start game
         // if get, then show form to assign teams
-
         if (Request.Method == "POST")
         {
             // look at form data and match name id to team id
             foreach (var player in _triviaContext.Players.Values)
             {
-                player.TeamId = Request.Form[player.Id];
+                player.TeamId = Request.Form?.TryGetValue(player.Id, out var teamId) ?? false ? teamId.ToString() : string.Empty;
             }
             _triviaContext.AssignTeams();
             return RedirectToAction("Index");

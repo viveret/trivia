@@ -4,7 +4,7 @@ namespace trivia.git.Models;
 
 public class Category
 {
-    public string Id { get; set; }
-    public string Name { get; set; }
+    public string Id { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
     public List<Question> Questions { get; set; } = new List<Question>();
 }
