@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = $"Question: \"{Model.Text}\"";
 }
+<h2>Category: @Model.Category?.Name</h2>
 <h1>Question: @Model.Text</h1>
 @if (Model.IsAnswerVisible)
 {

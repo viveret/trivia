@@ -1,0 +1,160 @@
+{
+  "Categories": [
+    {
+      "Id": "city_food",
+      "Name": "City Food",
+      "Questions": [
+        {
+          "Id": "pizza",
+          "Text": "What is the most popular food in the city?",
+          "Answer": "Pizza",
+          "Points": 10,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "bagel",
+          "Text": "What is the most popular breakfast food in the city?",
+          "Answer": "Bagel",
+          "Points": 20,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "hotdog",
+          "Text": "What is the most popular on-a-bun street food in the city?",
+          "Answer": "Hot Dog",
+          "Points": 30,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "falafel",
+          "Text": "What is the most popular Greek street food in the city?",
+          "Answer": "Falafel",
+          "Points": 40,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        }
+      ]
+    },
+    {
+      "Id": "city_drinks",
+      "Name": "City Drinks",
+      "Questions": [
+        {
+          "Id": "coffee",
+          "Text": "What is the most popular morning drink in the city?",
+          "Answer": "Coffee",
+          "Points": 10,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "beer",
+          "Text": "What is the most popular alcoholic drink in the city?",
+          "Answer": "Beer or Cocktails",
+          "Points": 20,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "soda",
+          "Text": "What is the most popular non-alcoholic drink in the city?",
+          "Answer": "Soda",
+          "Points": 30,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "water",
+          "Text": "What is the most popular drink in the city?",
+          "Answer": "Water",
+          "Points": 40,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        }
+      ]
+    },
+    {
+      "Id": "city_animals",
+      "Name": "City Animals",
+      "Questions": [
+        {
+          "Id": "pigeon",
+          "Text": "What is the most popular bird in the city?",
+          "Answer": "Pigeon",
+          "Points": 10,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "rat",
+          "Text": "What is the most popular rodent in the city?",
+          "Answer": "Rat",
+          "Points": 20,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "dog",
+          "Text": "What is the most popular pet in the city that also describes rain?",
+          "Answer": "Cats and Dogs",
+          "Points": 30,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "tardigrade",
+          "Text": "What is the most popular microscopic animal in the city that can survive in space?",
+          "Answer": "Tardigrade",
+          "Points": 40,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        }
+      ]
+    },
+    {
+      "Id": "cities_starting_with_the_letter_m",
+      "Name": "Cities Starting with the Letter M",
+      "Questions": [
+        {
+          "Id": "miami",
+          "Text": "What is the most popular city in Florida?",
+          "Answer": "Miami",
+          "Points": 10,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "milwaukee",
+          "Text": "What is the most popular city in Wisconsin?",
+          "Answer": "Milwaukee",
+          "Points": 20,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "minneapolis",
+          "Text": "What is the most popular city in Minnesota?",
+          "Answer": "Minneapolis",
+          "Points": 30,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        },
+        {
+          "Id": "memphis",
+          "Text": "What is the most popular city in Tennessee?",
+          "Answer": "Memphis",
+          "Points": 40,
+          "IsQuestionVisible": true,
+          "IsAnswerVisible": true
+        }
+      ]
+    }
+  ],
+  "Players": [
+  ],
+  "Teams": [
+  ]
+}

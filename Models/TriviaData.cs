@@ -6,7 +6,7 @@ public class TriviaData
     public List<Player> Players { get; set; } = new List<Player>();
     public List<Team> Teams { get; set; } = new List<Team>();
 
-    public void Reset()
+    public void RestartGame()
     {
         foreach (var category in Categories)
         {
@@ -34,6 +34,6 @@ public class TriviaData
     {
         Players.Clear();
         Teams.Clear();
-        Reset();
+        RestartGame();
     }
 }

@@ -3,6 +3,10 @@
     ViewData["Title"] = "Assign Teams";
 }
 <h1>@ViewData["Title"]</h1>
+<form method="post" asp-action="RandomizeTeams">
+    <button type="submit" class="btn btn-info">Randomize Teams and Start Game</button>
+</form>
+
 <form method="post">
     @foreach (var player in _triviaContext.Players)
     {

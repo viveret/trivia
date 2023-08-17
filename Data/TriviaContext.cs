@@ -8,6 +8,7 @@ namespace trivia.git.Data;
 
 public class TriviaContext
 {
+    private TriviaConfig Config { get; set; } = new TriviaConfig();
     private TriviaData Data { get; set; } = new TriviaData();
     public ConcurrentDictionary<string, Question> Questions { get; } = new ConcurrentDictionary<string, Question>();
     public ConcurrentDictionary<string, Player> Players { get; } = new ConcurrentDictionary<string, Player>();
@@ -20,15 +21,30 @@ public class TriviaContext
         LoadData();
     }
 
+    public string TriviaDataPath => Config.TriviaDataPath ?? "TriviaData.json";
+
     public void LoadData()
     {
-        // read from TriviaData.json
-        // deserialize into Question objects
-        // add to Questions dictionary
-
-        if (File.Exists("TriviaData.json"))
+        if (File.Exists("TriviaConfig.json"))
         {
-            var json = File.ReadAllText("TriviaData.json");
+            var json = File.ReadAllText("TriviaConfig.json");
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                return;
+            }
+
+            var config = JsonSerializer.Deserialize<TriviaConfig>(json);
+            if (config == null)
+            {
+                return;
+            }
+
+            Config = config;
+        }
+
+        if (File.Exists(TriviaDataPath))
+        {
+            var json = File.ReadAllText(TriviaDataPath);
             if (string.IsNullOrWhiteSpace(json))
             {
                 return;
@@ -93,12 +109,12 @@ public class TriviaContext
 
     public void SaveData()
     {
-        File.WriteAllText("TriviaData.json", JsonSerializer.Serialize(Data, new JsonSerializerOptions { WriteIndented = true }));
+        File.WriteAllText(TriviaDataPath, JsonSerializer.Serialize(Data, new JsonSerializerOptions { WriteIndented = true }));
     }
 
-    public void Reset()
+    public void RestartGame()
     {
-        Data.Reset();
+        Data.RestartGame();
         SaveData();
     }
 
@@ -113,14 +129,15 @@ public class TriviaContext
         return Data.Categories.ToList();
     }
 
-    public void CreatePlayers(string[] playerNames)
+    public void AddPlayers(string[] playerNames)
     {
         foreach (var playerName in playerNames)
         {
+            var playerNameWithoutEmail = playerName.Split('<')[0].Trim();
             var player = new Player
             {
-                Id = playerName.Trim().Replace(' ', '_').ToLower(),
-                Name = playerName.Trim(),
+                Id = playerNameWithoutEmail.Replace(' ', '_').ToLower(),
+                Name = playerNameWithoutEmail,
                 Score = 0,
             };
             Data.Players.Add(player);
@@ -128,7 +145,7 @@ public class TriviaContext
         }
     }
 
-    public void CreateTeams(string[] teamNames)
+    public void AddTeams(string[] teamNames)
     {
         foreach (var teamName in teamNames)
         {
@@ -164,6 +181,18 @@ public class TriviaContext
         return Data.Players.Count == 0;
     }
 
+    public bool IsCompletedGame()
+    {
+        return Data.Categories.All(c => c.Questions.All(q => q.IsAnswerVisible));
+    }
+
+    public List<Team> GetWinningTeams()
+    {
+        var teams = Teams.Values.GroupBy(t => t.Players.Sum(p => p.Score)).ToDictionary(k => k.Key, v => v.ToList());
+        var maxScore = teams.Keys.Max();
+        return teams[maxScore];
+    }
+
     public void AwardPoints(string playerId, int points)
     {
         Players[playerId].Score += points;
@@ -178,5 +207,41 @@ public class TriviaContext
             question.Value.IsAnswerVisible = true;
         }
         SaveData();
+    }
+
+    public void RandomizeTeams()
+    {
+        // randomize players into buckets
+        var random = new Random();
+        var buckets = Teams.Values.ToArray();
+
+        // shuffle buckets
+        for (var i = 0; i < buckets.Length; i++)
+        {
+            var j = random.Next(i, buckets.Length);
+            var temp = buckets[i];
+            buckets[i] = buckets[j];
+            buckets[j] = temp;
+        }
+
+        // evenly distribute players into buckets
+        var players = Players.Values.ToArray();
+        
+        // shuffle players
+        for (var i = 0; i < players.Length; i++)
+        {
+            var j = random.Next(i, players.Length);
+            var temp = players[i];
+            players[i] = players[j];
+            players[j] = temp;
+        }
+
+        for (var i = 0; i < players.Length; i++)
+        {
+            var j = i % buckets.Length;
+            players[i].TeamId = buckets[j].Id;
+        }
+
+        AssignTeams();
     }
 }

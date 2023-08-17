@@ -5,9 +5,56 @@
     // it will also show the teams with each player and their score. the score will be updated as the game progresses.
     var categories = _triviaContext.GetCategories();
     var teams = _triviaContext.Teams;
-    var teamColors = new string[] { "bg-primary", "bg-success", "bg-info", "bg-warning", "bg-danger" };
+    var teamColors = new string[] { "blue", "red", "green", "purple", "goldenrod", "hotpink" };
 }
-<h1>@ViewData["Title"]</h1>
+@section Scripts {
+    @if (_triviaContext.IsCompletedGame())
+    {
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+        <script>
+            var myCanvas = document.createElement('canvas');
+            myCanvas.width = window.innerWidth;
+            myCanvas.height = window.innerHeight;
+            document.body.appendChild(myCanvas);
+
+            var myConfetti = confetti.create(myCanvas, {
+                resize: true,
+                useWorker: true
+            });
+
+            function shootConfetti() {
+                myConfetti({ particleCount: 1000, angle: 270, spread: 180, origin: { y: -1 } });
+                setTimeout(shootConfetti, 1500);
+            }
+
+            shootConfetti();
+        </script>
+    }
+}
+@section Styles {
+    <style>
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+}
+@if (_triviaContext.IsCompletedGame())
+{
+    var winningTeams = _triviaContext.GetWinningTeams();
+    <h1>Congratulations, the Game is Over! Winning teams:</h1>
+    <ul>
+        @foreach (var team in winningTeams)
+        {
+            var teammates = string.Join(", ", team.Players.Select(p => p.Name));
+            <li><h2>@team.Name <small>(@teammates)</small></h2></li>
+        }
+    </ul>
+}
+
 <div class="row">
     <div class="col-md-12">
         <table class="table table-bordered">
@@ -48,17 +95,17 @@
                     @for (var i = 0; i < teams.Count; i++)
                     {
                         var team = teams.ElementAt(i);
-                        var color = teamColors[i];
+                        var color = teamColors[i % teamColors.Length];
                         var score = team.Value.Players.Sum(p => p.Score);
-                        <th colspan="2" class="@color text-light">@team.Value.Name (@score points)</th>
+                        <th colspan="2" class="text-light" style="background-color: @color;">@team.Value.Name (@score points)</th>
                     }
                 </tr>
                 <tr>
                     @for (var i = 0; i < teams.Count; i++)
                     {
-                        var color = teamColors[i];
-                        <th class="@color text-light">Player Name</th>
-                        <th class="@color text-light">Score</th>
+                        var color = teamColors[i % teamColors.Length];
+                        <th class="text-light" style="background-color: @color;">Player Name</th>
+                        <th class="text-light" style="background-color: @color;">Score</th>
                     }
                 </tr>
             </thead>
@@ -68,18 +115,18 @@
                     <tr>
                         @for (var col = 0; col < teams.Count; col++)
                         {
-                            var color = teamColors[col];
+                            var color = teamColors[col % teamColors.Length];
                             var team = teams.ElementAt(col);
                             var player = team.Value.Players.ElementAtOrDefault(row);
                             if (player != null)
                             {
-                                <td class="@color text-light">@player.Name</td>
-                                <td class="@color text-light">@player.Score</td>
+                                <td class="text-light" style=" background-color: @color;">@player.Name</td>
+                                <td class="text-light" style=" background-color: @color;">@player.Score</td>
                             }
                             else
                             {
-                                <td class="@color"></td>
-                                <td class="@color"></td>
+                                <td style="background-color: @color;"></td>
+                                <td style="background-color: @color;"></td>
                             }
                         }
                     </tr>
